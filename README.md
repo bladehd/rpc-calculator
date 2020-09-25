@@ -1,4 +1,16 @@
- #Requirement
+ #Description
+ A RPN Calculator which created by Spring shell
+ 
+ #Build environment
+ * JDK 10
+ * Maven 3.6.3
+ 
+ #Build source code
+ execute build.sh
+ #Run
+ execute start.sh
+ 
+ #Features
 * The calculator has a stack that can contain real numbers.
 * The calculator waits for user input and expects to receive strings containing whitespace separated lists of numbers and
 operators.
@@ -18,7 +30,3 @@ it causes no loss of precision).
 operator <operator> (position: <pos>): insufficient parameters
 * After displaying the warning, all further processing of the string terminates and the current state of the stack is displayed
 
-#Build
-execute build.sh
-#Run
-execute run.sh
