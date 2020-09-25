@@ -1,16 +1,16 @@
- #Description
+ # Description
  A RPN Calculator which created by Spring shell
  
- #Build environment
+ # Build environment
  * JDK 10
  * Maven 3.6.3
  
- #Build source code
+ # Build source code
  execute build.sh
- #Run
+ # Run this app
  execute start.sh
  
- #Features
+ # Features
 * The calculator has a stack that can contain real numbers.
 * The calculator waits for user input and expects to receive strings containing whitespace separated lists of numbers and
 operators.
