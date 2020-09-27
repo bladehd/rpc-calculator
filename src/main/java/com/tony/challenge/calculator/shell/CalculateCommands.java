@@ -7,7 +7,6 @@ import org.springframework.shell.CommandNotFound;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -20,6 +19,7 @@ public class CalculateCommands {
 
     @ShellMethod(value = "Add two integers together.", key = "+")
     public String plus(List<String> numbers) {
+        validateNumbers(numbers);
         calculateService.pushNumbersToStack(numbers);
         calculateService.plus();
         return calculateService.showStackNumbers();
@@ -27,6 +27,7 @@ public class CalculateCommands {
 
     @ShellMethod(value = "Add two integers together.", key = "-")
     public String minus(List<String> numbers) {
+        validateNumbers(numbers);
         calculateService.pushNumbersToStack(numbers);
         calculateService.minus();
         return calculateService.showStackNumbers();
@@ -34,6 +35,7 @@ public class CalculateCommands {
 
     @ShellMethod(value = "Add two integers together.", key = "*")
     public String multiply(List<String> numbers) {
+        validateNumbers(numbers);
         calculateService.pushNumbersToStack(numbers);
         calculateService.multiply();
         return calculateService.showStackNumbers();
@@ -41,6 +43,7 @@ public class CalculateCommands {
 
     @ShellMethod(value = "Add two integers together.", key = "/")
     public String divide(List<String> numbers) {
+        validateNumbers(numbers);
         calculateService.pushNumbersToStack(numbers);
         calculateService.divide();
         return calculateService.showStackNumbers();
@@ -48,6 +51,7 @@ public class CalculateCommands {
 
     @ShellMethod(value = "Add two integers together.", key = "sqrt")
     public String sqrt(List<String> numbers) {
+        validateNumbers(numbers);
         calculateService.pushNumbersToStack(numbers);
         calculateService.sqrt();
         return calculateService.showStackNumbers();
@@ -55,6 +59,7 @@ public class CalculateCommands {
 
     @ShellMethod(value = "Add two integers together.", key = "undo")
     public String undo(List<String> numbers) {
+        validateNumbers(numbers);
         calculateService.pushNumbersToStack(numbers);
         calculateService.undo();
         return calculateService.showStackNumbers();
@@ -63,7 +68,6 @@ public class CalculateCommands {
 
     @ShellMethod(value = "Add two integers together.", key = "clear")
     public String clear(List<String> numbers) {
-        calculateService.pushNumbersToStack(numbers);
         calculateService.clear();
         return calculateService.showStackNumbers();
     }
@@ -77,5 +81,13 @@ public class CalculateCommands {
         }
         calculateService.pushNumbersToStack(args);
         return calculateService.showStackNumbers();
+    }
+
+    private void validateNumbers(List<String> numbers) {
+        for(String number : numbers){
+            if (!StringUtils.isNumeric(number)) {
+                throw new IllegalArgumentException("Only support numbers as argument");
+            }
+        }
     }
 }
