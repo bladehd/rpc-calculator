@@ -17,7 +17,7 @@ public class CalculateCommands {
     @Autowired
     RPNCalculateService calculateService;
 
-    @ShellMethod(value = "Add two integers together.", key = "+")
+    @ShellMethod(value = "Add last two numbers in the stack together", key = "+")
     public String plus(List<String> numbers) {
         validateNumbers(numbers);
         calculateService.pushNumbersToStack(numbers);
@@ -25,7 +25,7 @@ public class CalculateCommands {
         return calculateService.showStackNumbers();
     }
 
-    @ShellMethod(value = "Add two integers together.", key = "-")
+    @ShellMethod(value = "The second to last number subtract the last number in the stack", key = "-")
     public String minus(List<String> numbers) {
         validateNumbers(numbers);
         calculateService.pushNumbersToStack(numbers);
@@ -33,7 +33,7 @@ public class CalculateCommands {
         return calculateService.showStackNumbers();
     }
 
-    @ShellMethod(value = "Add two integers together.", key = "*")
+    @ShellMethod(value = "ultiply by the last two numbers together", key = "*")
     public String multiply(List<String> numbers) {
         validateNumbers(numbers);
         calculateService.pushNumbersToStack(numbers);
@@ -41,7 +41,7 @@ public class CalculateCommands {
         return calculateService.showStackNumbers();
     }
 
-    @ShellMethod(value = "Add two integers together.", key = "/")
+    @ShellMethod(value = "The second to last number divide by the last number in the stack", key = "/")
     public String divide(List<String> numbers) {
         validateNumbers(numbers);
         calculateService.pushNumbersToStack(numbers);
@@ -49,7 +49,7 @@ public class CalculateCommands {
         return calculateService.showStackNumbers();
     }
 
-    @ShellMethod(value = "Add two integers together.", key = "sqrt")
+    @ShellMethod(value = "Calculate the square root of last number in the stack", key = "sqrt")
     public String sqrt(List<String> numbers) {
         validateNumbers(numbers);
         calculateService.pushNumbersToStack(numbers);
@@ -57,7 +57,7 @@ public class CalculateCommands {
         return calculateService.showStackNumbers();
     }
 
-    @ShellMethod(value = "Add two integers together.", key = "undo")
+    @ShellMethod(value = "Undo last operation", key = "undo")
     public String undo(List<String> numbers) {
         validateNumbers(numbers);
         calculateService.pushNumbersToStack(numbers);
@@ -66,13 +66,13 @@ public class CalculateCommands {
     }
 
 
-    @ShellMethod(value = "Add two integers together.", key = "clear")
+    @ShellMethod(value = "Clear calculation stack and operation stack", key = "clear")
     public String clear(List<String> numbers) {
         calculateService.clear();
         return calculateService.showStackNumbers();
     }
 
-    @ShellMethod(value = "Add two integers together.", key = "default")
+    @ShellMethod(value = "Default command, just push all numbers into stack", key = "default")
     public Object defaultMethod(List<String> args) {
         for (String arg : args) {
             if (!StringUtils.isNumeric(arg)) {

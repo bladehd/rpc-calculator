@@ -30,6 +30,7 @@
             <artifactId>spring-shell-starter</artifactId>
             <version>3.0.0.BUILD-SNAPSHOT</version>
             <exclusions>
+                <!--FIXME actually just need to override clear command, but now has some extension issue for standard command parse -->
                 <exclusion>
                     <groupId>org.springframework.shell</groupId>
                     <artifactId>spring-shell-standard-commands</artifactId>
